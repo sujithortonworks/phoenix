@@ -1,0 +1,35 @@
+export HBASE_DIR=/usr/hdp/current/hbase-client/
+
+ambari-qa@bbgclient:~/phoenix_pherf$ /usr/hdp/current/phoenix-client/bin/pherf-cluster.py   -listFiles
+HBASE_DIR environment variable is currently set to: /usr/hdp/current/hbase-client/
+Schema Files:
+/usr/hdp/2.6.3.22-1/phoenix/phoenix-pherf/config/datamodel/user_defined_schema.sql
+/datamodel/create_prod_test_unsalted.sql
+Scenario Files:
+/usr/hdp/2.6.3.22-1/phoenix/phoenix-pherf/config/scenario/user_defined_scenario.xml
+/scenario/prod_test_unsalted_scenario.xml
+
+
+ambari-qa@bbgclient:~/phoenix_pherf$ /usr/hdp/current/phoenix-client/bin/pherf-cluster.py -drop all -l -q -z bbg1.nova.local:2181/hbase-secure  -schemaFile '.*user_defined_schema.sql' -scenarioFile '.*user_defined_scenario.xml'
+HBASE_DIR environment variable is currently set to: /usr/hdp/current/hbase-client/
+Adding model for path:/usr/hdp/2.6.3.22-1/phoenix/phoenix-pherf/config/scenario/user_defined_scenario.xml
+19/01/10 22:55:22 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/01/10 22:55:26 WARN shortcircuit.DomainSocketFactory: The short-circuit local reads feature cannot be used because libhadoop cannot be loaded.
+Trying to match resource pattern: .*user_defined_schema.sql
+File resourceList Loaded: [/usr/hdp/2.6.3.22-1/phoenix/phoenix-pherf/config/datamodel/user_defined_schema.sql]
+
+ambari-qa@bbgclient:~/phoenix_pherf$ ll
+total 12
+drwxr-xr-x  3 ambari-qa hadoop 4096 Jan 10 22:55 ./
+drwxr-xr-x 14 ambari-qa hadoop 4096 Jan 10 22:55 ../
+drwxr-xr-x  2 ambari-qa hadoop 4096 Jan 10 22:56 RESULTS/
+ambari-qa@bbgclient:~/phoenix_pherf$ ll RESULTS/
+total 504
+drwxr-xr-x 2 ambari-qa hadoop   4096 Jan 10 22:56 ./
+drwxr-xr-x 3 ambari-qa hadoop   4096 Jan 10 22:56 ../
+-rw-r--r-- 1 ambari-qa hadoop 104598 Jan 10 22:56 RESULT_COMBINED_2019-01-10_10-55-44_detail.csv
+-rw-r--r-- 1 ambari-qa hadoop    111 Jan 10 22:55 RESULT_Data_Load_Summary_2019-01-10_10-55-44.csv
+-rw-r--r-- 1 ambari-qa hadoop    355 Jan 10 22:55 RESULT_test_scenario_2019-01-10_10-55-44_aggregate.csv
+-rw-r--r-- 1 ambari-qa hadoop    542 Jan 10 22:55 RESULT_test_scenario_2019-01-10_10-55-44_detail.csv
+-rw-r--r-- 1 ambari-qa hadoop 347315 Jan 10 22:56 RESULT_test_scenario_2019-01-10_10-55-44.jpg
+-rw-r--r-- 1 ambari-qa hadoop  38749 Jan 10 22:55 RESULT_test_scenario_2019-01-10_10-55-44.xml
